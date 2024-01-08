@@ -64,7 +64,6 @@ header {
   padding: 5px 10px;
   background-color: var(--blue);
   color: rgb(233, 233, 233);
-  border-radius: 5px;
   border: 2px solid var(--blue)
 }
 
@@ -130,7 +129,7 @@ header {
   margin: 0 100px;
   overflow-x: auto;
   display: flex;
-  border-bottom: 1px solid grey;
+  /* border-bottom: 1px solid grey; */
 }
 
 .hour-element {
@@ -142,17 +141,12 @@ header {
   padding-bottom: 20px;
 }
 
-.daily-container {
-  margin: 10px 100px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid grey;
-}
 
 .day-element {
   display: grid;
   align-items: center;
-  grid-template-columns: .5fr 1.5fr .85fr;
-  padding: 0px 10px;
+  grid-template-columns: 70px 1fr 150px;
+  
 }
 
 .day-element img {
@@ -167,3 +161,60 @@ header {
   gap: 14px;
 }
 
+.lower-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 0 100px;
+  grid-gap: 10px;
+}
+
+.lower-content > * {
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.daily-title {
+  font-weight: 600;
+}
+
+.daily-section {
+  grid-column: 1/3;
+  border: 1px solid grey;
+  border-radius: 5px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 10px;
+  padding: 10px;
+}
+
+.day-element img {
+  width: 50px;
+  height: 50px;
+}
+
+.feels-like-cont, .wind-cont, .humidity-cont, .precip-cont {
+  padding: 10px;
+}
+
+.feels-like-title,
+.wind-title,
+.humidity-title,
+.precip-title {
+  font-weight: 600;
+}
+
+.feels-like, .wind, .humidity, .precip {
+  font-size: 14px;
+}
+
+@media (min-width: 1000px) {
+  .lower-content {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+
+  .daily-section {
+    grid-row: 1/3;
+  }
+
+}

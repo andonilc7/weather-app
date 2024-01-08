@@ -17,6 +17,11 @@ const currentLow = document.querySelector('.current-low')
 const hourlyContainer = document.querySelector('.hourly-container')
 const dailyContainer = document.querySelector('.daily-container')
 
+const feelsLikeElement = document.querySelector('.feels-like')
+const windElement = document.querySelector('.wind')
+const humidityElement = document.querySelector('.humidity')
+const precipElement = document.querySelector('.precip')
+
 // ***** need to figure out how to approach toggling degrees setting 
 // bc currently dont have the location stored somewhere if clear 
 // out search bar but still want to toggle degrees *****
@@ -132,10 +137,22 @@ function renderDaily(data, degrees) {
   })
 }
 
+function renderCurrentDetails(data, degrees) {
+  if (degrees=='f') {
+    feelsLikeElement.textContent = `${data.current.feelslike_f}°F`;
+  } else if (degrees=='c'){
+    feelsLikeElement.textContent = `${data.current.feelslike_c}°C`;
+  }
+  windElement.textContent = `${data.current.wind_dir} ${data.current.wind_mph} mph`
+  humidityElement.textContent = `${data.current.humidity}%`
+  precipElement.textContent = (data.current.precip_in) + "''"
+}
+
 async function renderEverything(data, degrees) {
   renderOverview(data, degrees)
   renderHourly(data, degrees)
   renderDaily(data, degrees)
+  renderCurrentDetails(data,degrees)
 }
 
 function handleSearch() {
@@ -166,7 +183,6 @@ async function toggleDegrees() {
   }
   console.log('sdfds')
   renderEverything(await getData(currentInput), degrees)
-  renderHourly(await getData(currentInput), degrees)
 }
 
 toggleDegreesBtn.addEventListener("click", toggleDegrees)
