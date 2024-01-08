@@ -289,6 +289,7 @@ function iconURLHandle(imgURL) {
    case './assets/weather/64x64/night/395.png':
      iconImage =  require('./assets/weather/64x64/night/395.png');
      break;
+     
   }
   return iconImage
 }
