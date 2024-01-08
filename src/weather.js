@@ -56,7 +56,7 @@ function processData(data) {
 
 async function getData(location) {
  // const currentDataUrl = `http://api.weatherapi.com/v1/current.json?key=dc46089129e1449abfe201328240301&q=${location}`
- const forecastDataUrl = `http://api.weatherapi.com/v1/forecast.json?key=dc46089129e1449abfe201328240301&q=${location}&days=3`
+ const forecastDataUrl = `https://api.weatherapi.com/v1/forecast.json?key=dc46089129e1449abfe201328240301&q=${location}&days=3`
  try {
    // const reponseCurrent = await fetch(currentDataUrl, {mode: 'cors'});
    // const currentData = await reponseCurrent.json();
