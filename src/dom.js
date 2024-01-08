@@ -15,7 +15,7 @@ const currentHigh = document.querySelector('.current-high')
 const currentLow = document.querySelector('.current-low')
 
 const hourlyContainer = document.querySelector('.hourly-container')
-const dailyContainer = document.querySelector('.daily-selector')
+const dailyContainer = document.querySelector('.daily-container')
 
 // ***** need to figure out how to approach toggling degrees setting 
 // bc currently dont have the location stored somewhere if clear 
@@ -73,8 +73,8 @@ function renderHourly(data, degrees) {
     hourElement.append(time)
     const iconDisplay = document.createElement('img')
     const imgURL = newHourlyArr[index].icon
-    let iconImage;
-    iconDisplay.src = iconURLHandle(imgURL, iconImage);
+
+    iconDisplay.src = iconURLHandle(imgURL);
 
     hourElement.append(iconDisplay);
 
@@ -93,9 +93,42 @@ function renderHourly(data, degrees) {
 }
 
 function renderDaily(data, degrees) {
+  dailyContainer.textContent = '';
   const dailyArr = data.forecast.daily;
+  let index = 0;
   dailyArr.forEach(() => {
+    const dayElement = document.createElement('div')
+    dayElement.classList.add('day-element')
+    dailyContainer.append(dayElement);
 
+    const dayName = document.createElement('div')
+    dayName.textContent = dailyArr[index].day;
+    dayElement.append(dayName)
+
+    const iconDisplay = document.createElement('img')
+    const imgURL = dailyArr[index].icon
+    iconDisplay.src = iconURLHandle(imgURL);
+    dayElement.append(iconDisplay);
+
+    const dailyHLCont = document.createElement('div')
+    dailyHLCont.classList.add('daily-high-low-cont')
+    dayElement.append(dailyHLCont)
+    const dailyHigh = document.createElement('div')
+    dailyHigh.classList.add('daily-high')
+    dailyHLCont.append(dailyHigh)
+    const dailyLow = document.createElement('div')
+    dailyLow.classList.add('daily-low')
+    dailyHLCont.append(dailyLow)
+
+    if (degrees=='f') {
+      dailyHigh.textContent = `H: ${dailyArr[index].high_f}°F`
+      dailyLow.textContent = `L: ${dailyArr[index].low_f}°F`
+    } else if (degrees='c') {
+      dailyHigh.textContent = `H: ${dailyArr[index].high_c}°C`
+      dailyLow.textContent = `L: ${dailyArr[index].low_c}°C`
+    }
+
+    index++;
   })
 }
 

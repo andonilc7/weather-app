@@ -140,5 +140,30 @@ header {
   /* border: 1px solid black; */
   padding: 12px 8px;
   padding-bottom: 20px;
-
 }
+
+.daily-container {
+  margin: 10px 100px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid grey;
+}
+
+.day-element {
+  display: grid;
+  align-items: center;
+  grid-template-columns: .5fr 1.5fr .85fr;
+  padding: 0px 10px;
+}
+
+.day-element img {
+  justify-self: center;
+}
+
+.daily-high-low-cont {
+  justify-self: start;
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  justify-content: end;
+  gap: 14px;
+}
+

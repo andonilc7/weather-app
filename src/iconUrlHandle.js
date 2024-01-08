@@ -1,4 +1,5 @@
-function iconURLHandle(imgURL, iconImage) {
+function iconURLHandle(imgURL) {
+  let iconImage;
   switch(imgURL) {
     case './assets/weather/64x64/day/113.png':
       iconImage =  require('./assets/weather/64x64/day/113.png');
